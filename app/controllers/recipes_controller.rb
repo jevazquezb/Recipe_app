@@ -1,7 +1,28 @@
 class RecipesController < ApplicationController
-  def index; end
+  def index
+    @all_recipes = Recipe.all
+   end
 
   def show; end
+
+  def new ; end
+
+  def remove
+    Recipe.destroy_by(id: params[:id])
+    redirect_to '/recipes'
+  end
+
+  def create
+    Recipe.create(
+      name: params[:name],
+      preparation_time: params[:preparation_time],
+      cooking_time: params[:cooking_time],
+      description: params[:description],
+      public: params[:public],
+      user_id: params[:user_id]
+    )
+    redirect_to '/recipes'
+  end
 
   def public_recipes; end
 end
