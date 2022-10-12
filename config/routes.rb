@@ -4,8 +4,10 @@ Rails.application.routes.draw do
   post '/recipes/create', to: "recipes#create"
   get '/recipes/create', to: "recipes#new"
   get '/recipes/:id', to: "recipes#show"
+  get '/recipes/:id/add', to: "recipes#add_food_form"
   get 'recipes/public_recipes'
   post "/recipes/destroy", to: "recipes#destroy"
+  post "/recipes/add_recipe_food", to: "recipes#add_recipe_food"
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
