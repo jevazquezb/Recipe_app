@@ -15,19 +15,21 @@
  */
 
  ul {
-    list-style-type: none;
+  list-style-type: none;
  }
 
  li {
-    border: 2px solid gray;
+  border: 2px solid gray;
 
  }
 
  .row {
-     display: flex;
-     gap: 15px;
+  display: flex;
+  gap: 15px;
  }
 
- a {
-   text-decoration: none;
- }
+.single-rec,
+.single-rec:hover {
+  text-decoration: none;
+  color: inherit;
+}
