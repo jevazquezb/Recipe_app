@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'recipes#public_recipes'
-
   get '/public_recipes', to: 'recipes#public_recipes'
+  
+  resources :foods, except: :update
 end

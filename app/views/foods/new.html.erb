@@ -1,0 +1,25 @@
+<h1>Add Food</h1>
+
+<%= form_with model: @food do |form| %>  
+  <div>
+    <%= form.label :name, "Food:" %>
+    <%= form.text_field :name, placeholder: "Apple, chicken breasts..."%>
+  </div>
+
+  <div>
+    <%= form.label :quantity, "Quantity:" %>
+    <%= form.number_field :quantity, placeholder: "300, 20, 43.4...", step: :any %>
+  </div>
+
+  <div>
+    <%= form.label :measurement_unit, "Measurement unit" %>
+    <%= form.text_field :measurement_unit, placeholder: "grams or units..." %>
+  </div>
+
+  <div>
+    <%= form.label :price, "Price" %>
+    <%= form.number_field :price, placeholder: "$$$$$", step: :any %>
+  </div>        
+    
+  <%= form.submit 'Submit' %>
+<% end %>
