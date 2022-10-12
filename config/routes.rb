@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   get '/recipes/:id', to: "recipes#show"
   get 'recipes/public_recipes'
   post "/recipes/remove", to: "recipes#remove"
-  get 'foods/index'
-  get 'foods/show'
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
