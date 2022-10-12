@@ -18,10 +18,10 @@ class FoodsController < ApplicationController
     respond_to do |format|
       format.html do
         if @food.save
-          flash[:notice] = "Food saved successfully"
+          flash[:notice] = 'Food saved successfully'
           redirect_to foods_path
         else
-          flash.now[:alert] = "Food not saved"
+          flash.now[:alert] = 'Food not saved'
           render :new
         end
       end
