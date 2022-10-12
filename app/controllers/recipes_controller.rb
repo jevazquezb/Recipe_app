@@ -9,7 +9,7 @@ class RecipesController < ApplicationController
 
   def new ; end
 
-  def remove
+  def destroy
     Recipe.destroy_by(id: params[:id])
     redirect_to '/recipes'
   end

@@ -2,18 +2,18 @@
 <ul>
   <% @all_recipes.each_with_index do |recipe, i| %>
     <li class="row">
-    <a href=<%="/recipes/#{recipe.id}" %>>
+    <a href=<%="/recipes/#{recipe.id}"%>>
     <div>
      <p> <%=  i+1 %>. <%=  recipe.name %> </p>
-      <div class="remove">
-      <%= form_with url: "/recipes/remove", method: :post do |form| %>
-          <%= form.hidden_field :id, value:recipe.id %>
-          <%= form.submit "REMOVE" %>
-          <% end %>
-      </div>
       </div>
       <p> <%= recipe.description%></p>
       </a>
+      <div class="remove">
+        <%= form_with url: "/recipes/destroy", method: :post do |form| %>
+          <%= form.hidden_field :id, value:recipe.id %>
+          <%= form.submit "REMOVE" %>
+        <% end %>
+      </div>
     </li>
   <% end %>
 </ul>
