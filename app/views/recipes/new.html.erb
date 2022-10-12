@@ -1,0 +1,21 @@
+<h1 class="container">Add recipies</h1>
+<%= form_with url: "/recipes/create", method: :post do |form| %>
+  <%= form.label :name, class:"text-success" %>
+  <%= form.text_field :name %></br>
+
+  <%= form.label :preparation_time %>
+  <%= form.number_field :preparation_time, step: :any %></br>
+
+  <%= form.label :cooking_time %>
+  <%= form.number_field :cooking_time, step: :any %></br>
+
+  <%= form.label :description %>
+  <%= form.text_area :description, size: "70x10" %></br>
+
+  <%= form.check_box :public %>
+  <%= form.label :public, "Is the recipe public?" %></br>
+  <%= form.hidden_field :user_id, value:1 %>
+
+  <%= form.submit "Add" %>
+<% end %>
+

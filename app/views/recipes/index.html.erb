@@ -1,2 +1,17 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+<h1>Recipes list</h1>
+<ul>
+  <% @all_recipes.each_with_index do |recipe, i| %>
+    <li class="row">
+    <div>
+     <p> <%=  i+1 %>. <%=  recipe.name %> </p>
+      <div class="remove">
+      <%= form_with url: "/recipes/remove", method: :post do |form| %>
+          <%= form.hidden_field :id, value:recipe.id %>
+          <%= form.submit "REMOVE" %>
+          <% end %>
+      </div>
+      </div>
+      <p> <%= recipe.description%></p>
+    </li>
+  <% end %>
+</ul>
