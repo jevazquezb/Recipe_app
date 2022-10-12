@@ -1,2 +1,7 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1> <%=  @single_recipe.name %></h1>
+<div> 
+  <p>Preparation time: <%=  @single_recipe.preparation_time %> </p>
+  <p>Cooking time: <%=  @single_recipe.cooking_time %> </p>
+</div>
+
+<p><%=  @single_recipe.description %></p>
