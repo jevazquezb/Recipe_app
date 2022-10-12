@@ -2,6 +2,7 @@
 <ul>
   <% @all_recipes.each_with_index do |recipe, i| %>
     <li class="row">
+    <a href=<%="/recipes/#{recipe.id}" %>>
     <div>
      <p> <%=  i+1 %>. <%=  recipe.name %> </p>
       <div class="remove">
@@ -12,6 +13,7 @@
       </div>
       </div>
       <p> <%= recipe.description%></p>
+      </a>
     </li>
   <% end %>
 </ul>
