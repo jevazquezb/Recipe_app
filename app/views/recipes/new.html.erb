@@ -14,7 +14,7 @@
 
   <%= form.check_box :public %>
   <%= form.label :public, "Is the recipe public?" %></br>
-  <%= form.hidden_field :user_id, value:1 %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <%= form.submit "Add" %>
 <% end %>
