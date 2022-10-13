@@ -7,7 +7,7 @@
 <div class="d-flex flex-column align-items-center">
   <h1>Public recipes</h1>
   <% @public_recipes.each do |recipe| %>
-    <a href=<%= "/recipes/#{recipe.id}" %> class="w-50 d-flex justify-content-center gap-5 border border-3 border-dark text-reset text-decoration-none">
+    <a href=<%="/recipes/#{recipe.id}"%> class="w-50 d-flex justify-content-center gap-5 border border-3 border-dark text-reset text-decoration-none">
       <div>
         <h2><%= recipe.name %></h2>
         <h3>By <%= recipe.user.name %></h3>
