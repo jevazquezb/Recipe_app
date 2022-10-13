@@ -1,25 +1,26 @@
-<h1>Add Food</h1>
+<h1 class="text-center mt-4">Add Food</h1>
+<div class="d-flex justify-content-center">
+  <%= form_with model: @food, class: "d-flex flex-column gap-3" do |form| %>  
+    <div class="d-flex flex-column">
+      <%= form.label :name, "Food:" %>
+      <%= form.text_field :name, placeholder: "Apple, chicken breasts..."%>
+    </div>
 
-<%= form_with model: @food do |form| %>  
-  <div>
-    <%= form.label :name, "Food:" %>
-    <%= form.text_field :name, placeholder: "Apple, chicken breasts..."%>
-  </div>
+    <div class="d-flex flex-column">
+      <%= form.label :quantity, "Quantity:" %>
+      <%= form.number_field :quantity, placeholder: "300, 20, 43.4...", step: :any %>
+    </div>
 
-  <div>
-    <%= form.label :quantity, "Quantity:" %>
-    <%= form.number_field :quantity, placeholder: "300, 20, 43.4...", step: :any %>
-  </div>
+    <div class="d-flex flex-column">
+      <%= form.label :measurement_unit, "Measurement unit:" %>
+      <%= form.text_field :measurement_unit, placeholder: "grams or units..." %>
+    </div>
 
-  <div>
-    <%= form.label :measurement_unit, "Measurement unit" %>
-    <%= form.text_field :measurement_unit, placeholder: "grams or units..." %>
-  </div>
-
-  <div>
-    <%= form.label :price, "Price" %>
-    <%= form.number_field :price, placeholder: "$$$$$", step: :any %>
-  </div>        
-    
-  <%= form.submit 'Submit' %>
-<% end %>
+    <div class="d-flex flex-column">
+      <%= form.label :price, "Price:" %>
+      <%= form.number_field :price, placeholder: "$$$$$", step: :any %>
+    </div>        
+      
+    <%= form.submit 'Submit', class: "align-self-center btn btn-primary" %>
+  <% end %>
+</div>
