@@ -1,3 +1,12 @@
+<% if user_signed_in? %>
+  <a href="/recipes">
+    <button class="btn btn-primary"> Back</button>
+  </a>
+<%else%>
+  <a href="/">
+    <button class="btn btn-primary"> Back</button>
+  </a>
+<%end%>
 <h1> <%= @single_recipe.name %></h1>
 <div> 
   <p>Preparation time: <%=  @single_recipe.preparation_time %> </p> 
@@ -6,10 +15,12 @@
 </div>
 
 <p><%= @single_recipe.description %></p>
-<div>
-  <a href="/general_shopping_list"> <button>General Shopping List </button></a>
-  <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
-</div>
+<% if user_signed_in? %>
+  <div>
+    <a href="/general_shopping_list"> <button>General Shopping List </button></a>
+    <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+  </div>
+<%end%>
 
 
 <ul>
@@ -19,3 +30,4 @@
     Value: <p><%=recipe_food.food.price * recipe_food.quantity%></p>
   <%end %>
 </ul>
+
