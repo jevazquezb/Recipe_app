@@ -3,3 +3,8 @@ Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit amet quae, ullam
 <%= form.select :food_id, ["Berlin", "Chicago", "Madrid"] %> 
 
 <%= form.colletion_select(:recipe_id, @foods, :id, :name) %>
+
+<%= form_with url: "/recipes/indrendiant/edit", method: :get do |form| %>
+<%= form.hidden_field :rf_id, value:recipe_food.id %>
+<%= form.submit "Edit", :class=>"btn btn-warning" %>
+<% end %>

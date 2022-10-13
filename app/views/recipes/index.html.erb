@@ -1,19 +1,30 @@
-<h1>Recipes list</h1>
-<ul>
-  <% @all_recipes.each_with_index do |recipe, i| %>
-    <li class="row">
-    <a class='single-rec' href=<%="/recipes/#{recipe.id}"%>>
-    <div>
-     <p> <%=  i+1 %>. <%=  recipe.name %> </p>
-      </div>
-      <p> <%= recipe.description%></p>
-      </a>
-      <div class="remove">
+<% if @all_recipes.any? %>
+  <h1>Recipes list</h1>
+  <table class="table  table-striped table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Description</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @all_recipes.each_with_index do |recipe, i| %>
+      <tr>
+      <th><a class='single-rec' href=<%="/recipes/#{recipe.id}"%>> <%=  i+1 %></a> </th>
+      <th><a class='single-rec' href=<%="/recipes/#{recipe.id}"%>><%=  recipe.name %></a> </th>
+      <th><a class='single-rec' href=<%="/recipes/#{recipe.id}"%>> <%= recipe.description%></a></th>
+      <th class="remove">
         <%= form_with url: "/recipes/destroy", method: :post do |form| %>
           <%= form.hidden_field :id, value:recipe.id %>
           <%= form.submit "REMOVE" %>
         <% end %>
-      </div>
-    </li>
-  <% end %>
-</ul>
+        </th>
+      </tr>
+    <% end %>
+    <tbody>
+  </table>
+<% else %>
+  <h2>you have't yet added any recipe, add them and come back</h2>
+<% end %>

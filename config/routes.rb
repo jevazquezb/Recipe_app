@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/recipes/:id/add', to: "recipes#add_food_form"
   post "/recipes/destroy", to: "recipes#destroy"
   post "/recipes/add_recipe_food", to: "recipes#add_recipe_food"
+  get "recipes/:id/update/:id", to: "recipes#edit_ingrediant"
+  post "/recipes/ingredint/destroy", to: "recipes#remove_ingrediant"
   devise_for :users
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
