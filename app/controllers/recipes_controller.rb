@@ -19,7 +19,6 @@ class RecipesController < ApplicationController
 
   def edit_ingrediant
     @editable_recipe_food = RecipeFood.find_by(id: params[:rf_id])
-    
   end
 
   def remove_ingrediant
