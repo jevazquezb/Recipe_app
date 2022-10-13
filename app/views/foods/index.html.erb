@@ -1,9 +1,7 @@
-<div class="table">
-  <%= button_to "Add Food", new_food_path, method: :get %>
-
+<div class="d-flex justify-content-center mt-5">
   <% if @foods.any? %>
-    <table id="foods">
-      <tr>
+    <table id="foods" class="table w-50">
+      <tr class="bg-primary text-white">
         <th>Food</th>
         <th>Quantity</th>
         <th>Measurement Unit</th>
@@ -17,7 +15,7 @@
           <td><%= food.measurement_unit %></td>
           <td><%= "$#{food.price}" %></td>
           <td>
-            <%= button_to "Delete", food_path(food.id), method: :delete %>
+            <%= button_to "Delete", food_path(food.id), method: :delete, class: "btn btn-outline-danger" %>
           </td>
         </tr>
       <% end %>
