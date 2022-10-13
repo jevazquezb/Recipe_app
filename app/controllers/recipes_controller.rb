@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def show
     @single_recipe = Recipe.find_by(id: params[:id])
+    
   end
 
   def add_food_form

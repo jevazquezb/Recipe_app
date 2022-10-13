@@ -11,3 +11,11 @@
   <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
 </div>
 
+
+<ul>
+  <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
+    item: <p><%=recipe_food.food.name%></p>
+    quantity: <p><%=recipe_food.quantity%></p>
+    Value: <p><%=recipe_food.food.price * recipe_food.quantity%></p>
+  <%end %>
+</ul>
