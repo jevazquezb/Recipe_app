@@ -1,2 +1,23 @@
-<h1>GeneralShoppingList#index</h1>
-<p>Find me in app/views/general_shopping_list/index.html.erb</p>
+<div class="d-flex flex-column align-items-center">
+  <h1>Shopping List</h1>
+
+  <div class="d-flex gap-5">
+    <span>Amount of food items to buy: <%= @amount_of_items %></span>
+    <span>Total value of food needed: <%= "$#{@total_price.round(2)}" %></span>
+  </div>
+
+  <table id="missing-foods" class="table table-sm table-bordered" style="width: auto">
+    <tr>
+      <th>Food</th>
+      <th>Quantity</th>
+      <th>Total Price</th>
+    </tr>
+    <% @missing_food.each do |food| %>
+      <tr>
+        <td><%= food[:name] %></td>
+        <td><%= food[:quantity] %></td>
+        <td><%= "$#{food[:price].round(2)}" %></td>
+      </tr>
+    <% end %> 
+  </table>
+</div>
