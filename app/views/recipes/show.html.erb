@@ -1,2 +1,21 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1> <%=  @single_recipe.name %></h1>
+<div> 
+  <p>Preparation time: <%=  @single_recipe.preparation_time %> </p> 
+  <p><input type="radio"  name="public" checked=<%=  @single_recipe.public ? "checked" : "" %> /></p>
+  <p>Cooking time: <%=  @single_recipe.cooking_time %> </p>
+</div>
+
+<p><%=  @single_recipe.description %></p>
+<div>
+  <a href="/general_shoping_list"> <button>General Shopping List </button></a>
+  <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+</div>
+
+
+<ul>
+  <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
+    item: <p><%=recipe_food.food.name%></p>
+    quantity: <p><%=recipe_food.quantity%></p>
+    Value: <p><%=recipe_food.food.price * recipe_food.quantity%></p>
+  <%end %>
+</ul>

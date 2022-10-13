@@ -1,13 +1,25 @@
 class RecipesController < ApplicationController
   def index
     @all_recipes = Recipe.all
-   end
+  end
 
-  def show; end
+  def show
+    @single_recipe = Recipe.find_by(id: params[:id])
+  end
 
-  def new ; end
+  def add_food_form
+    @recipe_id = params[:id]
+    @foods = Food.all
+  end
 
-  def remove
+  def add_recipe_food
+    RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id], food_id: params[:food_id])
+    redirect_to "/recipes/#{params[:recipe_id]}"
+  end
+
+  def new; end
+
+  def destroy
     Recipe.destroy_by(id: params[:id])
     redirect_to '/recipes'
   end
