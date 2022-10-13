@@ -18,7 +18,14 @@ class RecipesController < ApplicationController
   end
 
   def edit_ingrediant
-    @editable_recipe_food = RecipeFood.find_by(id: params[:rf_id])
+    @editable_recipe_food = RecipeFood.find_by(id: params[:id])
+    @foods = Food.all
+  end
+
+  def update_recipe_food
+    @rfupdate = RecipeFood.find_by(id: params[:id])
+    @rfupdate.update(quantity: params[:quantity])
+    redirect_to "/recipes/#{params[:recipe_id]}"
   end
 
   def remove_ingrediant
