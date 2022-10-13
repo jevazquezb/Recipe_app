@@ -1,13 +1,13 @@
-<h1> <%=  @single_recipe.name %></h1>
+<h1> <%= @single_recipe.name %></h1>
 <div> 
   <p>Preparation time: <%=  @single_recipe.preparation_time %> </p> 
   <p><input type="radio"  name="public" checked=<%=  @single_recipe.public ? "checked" : "" %> /></p>
   <p>Cooking time: <%=  @single_recipe.cooking_time %> </p>
 </div>
 
-<p><%=  @single_recipe.description %></p>
+<p><%= @single_recipe.description %></p>
 <div>
-  <a href="/general_shoping_list"> <button>General Shopping List </button></a>
+  <a href="/general_shopping_list"> <button>General Shopping List </button></a>
   <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
 </div>
 

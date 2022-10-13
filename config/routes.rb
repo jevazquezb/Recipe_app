@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   get '/public_recipes', to: 'recipes#public_recipes'
   
   resources :foods, except: :update
+  resources :general_shopping_list, only: :index
 end
