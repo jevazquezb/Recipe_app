@@ -1,23 +1,17 @@
-<% if user_signed_in? %>
-  <h2>Hello, <%= current_user.name %>!</h2>
-<% else %>
-  <h1>You're not signed in</h1>
-<% end %>
-
 <div class="d-flex flex-column align-items-center">
-  <h1>Public recipes</h1>
+  <h1 class="mt-3 mb-4">Public recipes</h1>
   <% @public_recipes.each do |recipe| %>
-    <a href=<%="/recipes/#{recipe.id}"%> class="w-50 d-flex justify-content-center gap-5 border border-3 border-dark text-reset text-decoration-none">
+    <a href=<%="/recipes/#{recipe.id}"%> class="w-50 d-flex justify-content-center gap-5 border border-3 border-dark text-reset text-decoration-none p-2">
       <div>
         <h2><%= recipe.name %></h2>
-        <h3>By <%= recipe.user.name %></h3>
+        <h5>By <%= recipe.user.name %></h5>
       </div>
-      <div>
-        <p>Total food items: <%= recipe.recipe_foods.count %></p>
+      <div class="pt-1">
+        <p class="mb-1">Total food items: <%= recipe.recipe_foods.count %></p>
         <% cost = recipe.recipe_foods.includes(:food).map do |recipe_food| %>
           <% recipe_food.food.price * recipe_food.quantity %>
         <% end %>
-        <p>Total price: <%= "$#{cost.sum}" %></p>
+        <p class="mb-0">Total price: <%= "$#{cost.sum}" %></p>
       </div>
     </a>
   <% end %>
