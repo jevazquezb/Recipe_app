@@ -37,6 +37,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
+    puts current_user
     @public_recipes = Recipe.where(public: true).order(created_at: :desc).includes(:user)
   end
 end
