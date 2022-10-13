@@ -36,5 +36,7 @@ class RecipesController < ApplicationController
     redirect_to '/recipes'
   end
 
-  def public_recipes; end
+  def public_recipes
+    @public_recipes = Recipe.where(public: true).order(created_at: :desc).includes(:user)
+  end
 end
