@@ -14,19 +14,19 @@
  *= require_self
  */
 
- ul {
-  list-style-type: none;
- }
+ul {
+ list-style-type: none;
+}
 
- li {
+li {
   border: 2px solid gray;
 
- }
+}
 
- .row {
+.row {
   display: flex;
   gap: 15px;
- }
+}
 
 .single-rec,
 .single-rec:hover {
