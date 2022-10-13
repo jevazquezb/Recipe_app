@@ -1,8 +1,16 @@
 <%= form_with url: "/recipes/add_recipe_food", method: :post do |form| %>
-  <%= form.label :food_id, "Select the food you add" %>
-  <%= form.select :food_id, @foods.map { |t| [t.name, t.id]} %> </br>
-  <%= form.label :quantity, "enter number of items" %>
-  <%= form.number_field :quantity, :value=>1 %> </br>
+
+
+<div class="mb-2">
+  <%= form.label :food_id, "Select the food you add", class:"text-success form-label"%>
+  <%= form.select :food_id, @foods.map { |t| [t.name, t.id]}, :class=>"form-select"%> </br>
+</div>
+
+<div class="mb-2">
+    <%= form.label :quantity,"enter number of items", class:"text-success form-label" %>
+    <%= form.number_field :quantity, step: :any, :class=>"form-control", :value=>1  %>
+  </div>
+
   <%= form.hidden_field :recipe_id, value: @recipe_id  %>
-  <%= form.submit "Add Recipe Food" %>
+  <%= form.submit "Add Recipe Food", :class=>"form-control btn btn-primary" %>
 <% end %>
