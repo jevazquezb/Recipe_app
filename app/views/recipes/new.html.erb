@@ -1,21 +1,31 @@
-<h1 class="container">Add recipies</h1>
+<div class = "container">
+<h1 class="">Add recipies</h1>
 <%= form_with url: "/recipes/create", method: :post do |form| %>
-  <%= form.label :name, class:"text-success" %>
-  <%= form.text_field :name %></br>
 
-  <%= form.label :preparation_time %>
-  <%= form.number_field :preparation_time, step: :any %></br>
+  <div class="mb-2">
+    <%= form.label :name, class:"text-success form-label" %>
+    <%= form.text_field :name, :class=>"form-control"  %>
+  </div>
 
-  <%= form.label :cooking_time %>
-  <%= form.number_field :cooking_time, step: :any %></br>
+  <div class="mb-2">
+    <%= form.label :preparation_time, class:"text-success form-label" %>
+    <%= form.number_field :preparation_time, step: :any, :class=>"form-control" %>
+  </div>
 
-  <%= form.label :description %>
-  <%= form.text_area :description, size: "70x10" %></br>
+   <div class="mb-2">
+    <%= form.label :cooking_time, class:"text-success form-label" %>
+    <%= form.number_field :cooking_time, step: :any, :class=>"form-control"  %>
+  </div>
 
-  <%= form.check_box :public %>
-  <%= form.label :public, "Is the recipe public?" %></br>
+  <div class="mb-2">
+    <%= form.label :description, class:"form-label text-success" %>
+    <%= form.text_area :description, :class=>"form-control" %>
+  </div>
+<div class="mb-2">
+  <%= form.check_box :public, :class=>"form-check-input", :role=>'switch' %>
+  <%= form.label :public, "Is the recipe public?",  class:"form-label text-success"%>
   <%= form.hidden_field :user_id, value: current_user.id %>
-
-  <%= form.submit "Add" %>
+</div>
+  <%= form.submit "Add", :class=>"btn btn-primary" %>
 <% end %>
-
+</div>

@@ -1,6 +1,6 @@
 class RecipesController < ApplicationController
   def index
-    @all_recipes = Recipe.all
+    @all_recipes = Recipe.where(user_id: current_user.id)
   end
 
   def show
@@ -15,6 +15,22 @@ class RecipesController < ApplicationController
   def add_recipe_food
     RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id], food_id: params[:food_id])
     redirect_to "/recipes/#{params[:recipe_id]}"
+  end
+
+  def edit_ingrediant
+    @editable_recipe_food = RecipeFood.find_by(id: params[:id])
+    @foods = Food.all
+  end
+
+  def update_recipe_food
+    @rfupdate = RecipeFood.find_by(id: params[:id])
+    @rfupdate.update(quantity: params[:quantity])
+    redirect_to "/recipes/#{params[:recipe_id]}"
+  end
+
+  def remove_ingrediant
+    RecipeFood.destroy_by(id: params[:rf_id])
+    redirect_to "/recipes/#{params[:r_id]}"
   end
 
   def new; end

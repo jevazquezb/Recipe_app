@@ -1,3 +1,4 @@
+<div class="float-end">
 <% if user_signed_in? %>
   <a href="/recipes">
     <button class="btn btn-primary"> Back</button>
@@ -7,27 +8,71 @@
     <button class="btn btn-primary"> Back</button>
   </a>
 <%end%>
-<h1> <%= @single_recipe.name %></h1>
-<div> 
-  <p>Preparation time: <%=  @single_recipe.preparation_time %> </p> 
-  <p><input type="radio"  name="public" checked=<%=  @single_recipe.public ? "checked" : "" %> /></p>
-  <p>Cooking time: <%=  @single_recipe.cooking_time %> </p>
 </div>
 
+
+<div>
+<h1> <%= @single_recipe.name %></h1>
+</div> 
+
+<div>
+  <p class="fs-3 float-start">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
+  <div class="float-end">
+  <% if  @single_recipe.public %>
+  <div class="form-check form-switch">
+  <input class="form-check-input " type="checkbox" disabled role="switch" checked id="public">
+  <label class="form-check-label" for="public">public</label>
+</div>
+<% else %>
+<div class="form-check form-switch">
+  <input class="form-check-input " type="checkbox" disabled role="switch" id="public">
+  <label class="form-check-label" for="public">public</label>
+</div>
+<% end %>
+</div>
+</div>
+
+<div class=" float-start">
+<p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> </p>
 <p><%= @single_recipe.description %></p>
+</div>
+
 <% if user_signed_in? %>
-  <div>
+  <div class="float-start">
     <a href="/general_shopping_list"> <button>General Shopping List </button></a>
     <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
   </div>
 <%end%>
 
 
-<ul>
+<div class="table table-group-divider float-start mt-3 p-2"></div>
+<table class="table">
+  <thead>
+    <tr class="bg-primary text-white">
+      <th scope="col">Food Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
   <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
-    item: <p><%=recipe_food.food.name%></p>
-    quantity: <p><%=recipe_food.quantity%></p>
-    Value: <p><%=recipe_food.food.price * recipe_food.quantity%></p>
+    <tr>
+    <th><%=recipe_food.food.name%></th>
+    <th><%=recipe_food.quantity%></th>
+    <th><%=recipe_food.food.price * recipe_food.quantity%></th>
+    <th class="d-flex gap-2">
+      <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
+      <button class="btn btn-warning">Edit</button>
+      </a>
+
+      <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
+          <%= form.hidden_field :rf_id, value:recipe_food.id %>
+          <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
+          <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
+        <% end %>
+    </th>
+    <tr>
   <%end %>
-</ul>
+</table>
 
