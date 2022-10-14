@@ -61,6 +61,7 @@
     <th class="text-start"><%=recipe_food.quantity%></th>
     <th class="text-start"><%=recipe_food.food.price * recipe_food.quantity%></th>
     <th class="d-flex gap-2 text-start">
+    <% if user_signed_in? %>
       <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
       <button class="btn btn-warning">Edit</button>
       </a>
@@ -69,6 +70,7 @@
           <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
           <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
         <% end %>
+      <%end%>
     </th>
     <tr>
   <% end %>
