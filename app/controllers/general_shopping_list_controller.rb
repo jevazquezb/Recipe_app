@@ -1,4 +1,6 @@
 class GeneralShoppingListController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     @missing_food = []
     current_user.foods.each do |food|
