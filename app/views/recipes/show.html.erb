@@ -40,7 +40,9 @@
   <% if user_signed_in? %>
     <div class="float-start">
       <a href="/general_shopping_list"> <button>General Shopping List </button></a>
-      <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+      <% if can? :modify, @single_recipe %>
+        <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+      <% end %>
     </div>
   <%end%>
 </div>
@@ -52,7 +54,9 @@
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
       <% if user_signed_in? %>
-        <th scope="col" class="text-center">Actions</th>
+        <% if can? :modify, @single_recipe %>
+          <th scope="col" class="text-center">Actions</th>
+        <% end %>
       <% end %>
     </tr>
   </thead>
@@ -63,7 +67,8 @@
         <th class="text-start"><%=recipe_food.quantity%></th>
         <th class="text-start"><%=recipe_food.food.price * recipe_food.quantity%></th>
         <% if user_signed_in? %>
-          <th class="d-flex gap-2 justify-content-center">
+          <% if can? :modify, @single_recipe %>
+            <th class="d-flex gap-2 justify-content-center">
               <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
                 <button class="btn btn-warning">Edit</button>
               </a>
@@ -72,7 +77,8 @@
                 <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
                 <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
               <% end %>            
-          </th>
+            </th>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
