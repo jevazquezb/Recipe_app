@@ -45,33 +45,37 @@
   <%end%>
 </div>
 <div class="table table-group-divider mt-3 p-2"></div>
-<table class="table border border-3 border-muted rounded-4">
+<table class="table table-fixed border border-3 border-muted rounded-4">
   <thead>
-    <tr class="bg-primary text-white d-flex justify-content-between">
+    <tr class="bg-primary text-white">
       <th scope="col">Food Name</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
-      <th scope="col">Actions</th>
+      <% if user_signed_in? %>
+        <th scope="col" class="text-center">Actions</th>
+      <% end %>
     </tr>
   </thead>
   <tbody>
-  <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
-    <tr class="d-flex justify-content-between">
-    <th class="text-start"><%=recipe_food.food.name%></th>
-    <th class="text-start"><%=recipe_food.quantity%></th>
-    <th class="text-start"><%=recipe_food.food.price * recipe_food.quantity%></th>
-    <th class="d-flex gap-2 text-start">
-      <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
-      <button class="btn btn-warning">Edit</button>
-      </a>
-        <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
-          <%= form.hidden_field :rf_id, value:recipe_food.id %>
-          <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
-          <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
+    <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
+      <tr class="">
+        <th class="text-start"><%=recipe_food.food.name%></th>
+        <th class="text-start"><%=recipe_food.quantity%></th>
+        <th class="text-start"><%=recipe_food.food.price * recipe_food.quantity%></th>
+        <% if user_signed_in? %>
+          <th class="d-flex gap-2 justify-content-center">
+              <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
+                <button class="btn btn-warning">Edit</button>
+              </a>
+              <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
+                <%= form.hidden_field :rf_id, value:recipe_food.id %>
+                <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
+                <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
+              <% end %>            
+          </th>
         <% end %>
-    </th>
-    <tr>
-  <% end %>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
