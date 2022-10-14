@@ -15,7 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def add_recipe_food
-    RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id], food_id: params[:food_id])
+    @recfoo_cre = RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id], food_id: params[:food_id])
+    authorize! :create, @recfoo_cre
     redirect_to "/recipes/#{params[:recipe_id]}"
   end
 
@@ -27,11 +28,15 @@ class RecipesController < ApplicationController
   def update_recipe_food
     @rfupdate = RecipeFood.find_by(id: params[:id])
     @rfupdate.update(quantity: params[:quantity])
+    authorize! :modify, @rfupdate
     redirect_to "/recipes/#{params[:recipe_id]}"
   end
 
   def remove_ingrediant
-    RecipeFood.destroy_by(id: params[:rf_id])
+    @recfoo_des = RecipeFood.find(params[:rf_id])
+    @recfoo_des.destroy
+    authorize! :modify, @recfoo_des
+    # RecipeFood.destroy_by(id: params[:rf_id])
     redirect_to "/recipes/#{params[:r_id]}"
   end
 
