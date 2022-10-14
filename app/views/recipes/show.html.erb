@@ -19,21 +19,21 @@
   <p class="fs-3 float-start">Preparation time: <%=  @single_recipe.preparation_time %> hrs</p> 
   <div class="float-end">
   <% if  @single_recipe.public %>
-  <div class="form-check form-switch">
-  <input class="form-check-input " type="checkbox" disabled role="switch" checked id="public">
-  <label class="form-check-label" for="public">public</label>
-</div>
-<% else %>
-<div class="form-check form-switch">
-  <input class="form-check-input " type="checkbox" disabled role="switch" id="public">
-  <label class="form-check-label" for="public">public</label>
-</div>
-<% end %>
-</div>
-  <p class="fs-3">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
+      <div class="form-check form-switch">
+      <input class="form-check-input " type="checkbox" disabled role="switch" checked id="public">
+      <label class="form-check-label" for="public">public</label>
+    </div>
+  <% else %>
+    <div class="form-check form-switch">
+      <input class="form-check-input " type="checkbox" disabled role="switch" id="public">
+      <label class="form-check-label" for="public">public</label>
+    </div>
+  <% end %>
+  </div>
+  <p class="fs-3">Preparation time: <%=  @single_recipe.preparation_time %> hrs</p> 
 
 </div>
-<p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> </p>
+<p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> hrs</p>
 <p><%= @single_recipe.description %></p>
 
 <div class="p-5 mt-3 mb-3">
@@ -69,11 +69,9 @@
           <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
           <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
         <% end %>
-      <% else %>
-        <p class="mb-0 text-white">Invisible text</p>
-      <% end %>
     </th>
     <tr>
   <% end %>
+  </tbody>
 </table>
 
