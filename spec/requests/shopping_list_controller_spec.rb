@@ -16,7 +16,7 @@ RSpec.describe 'GeneralShoppingLists', type: :request do
       name: 'Tomato',
       measurement_unit: 'kgs',
       price: 2.5,
-      quantity: 10,
+      quantity: 4.7,
       user_id: @user.id
     )
 
@@ -30,7 +30,7 @@ RSpec.describe 'GeneralShoppingLists', type: :request do
     )
 
     RecipeFood.create(
-      quantity: 4.7,
+      quantity: 10,
       recipe_id: @recipe.id,
       food_id: @food.id
     )
@@ -48,7 +48,7 @@ RSpec.describe 'GeneralShoppingLists', type: :request do
     end
 
     it 'should render the correct text' do
-      expect(response.body).to include('Total value of food needed:')
+      expect(response.body).to include('Total value of food needed: $13.25')
     end
   end
 end
