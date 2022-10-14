@@ -12,7 +12,7 @@
 
 
 <div>
-<h1> <%= @single_recipe.name %></h1>
+<h3 class="align-middle">Recipe Name: <%= @single_recipe.name %></h3>
 </div> 
 
 <div>
@@ -30,25 +30,24 @@
 </div>
 <% end %>
 </div>
-</div>
+  <p class="fs-3">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
 
-<div class=" float-start">
-<p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> hrs</p>
+</div>
+<p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> </p>
 <p><%= @single_recipe.description %></p>
+
+<div class="p-5 mt-3 mb-3">
+  <% if user_signed_in? %>
+    <div class="float-start">
+      <a href="/general_shopping_list"> <button>General Shopping List </button></a>
+      <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+    </div>
+  <%end%>
 </div>
-
-<% if user_signed_in? %>
-  <div class="float-start">
-    <a href="/general_shopping_list"> <button>General Shopping List </button></a>
-    <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
-  </div>
-<% end %>
-
-
-<div class="table table-group-divider float-start mt-3 p-2"></div>
-<table class="table">
+<div class="table table-group-divider mt-3 p-2"></div>
+<table class="table border border-3 border-muted rounded-4">
   <thead>
-    <tr class="bg-primary text-white">
+    <tr class="bg-primary text-white d-flex justify-content-between">
       <th scope="col">Food Name</th>
       <th scope="col">Quantity</th>
       <th scope="col">Price</th>
@@ -57,16 +56,14 @@
   </thead>
   <tbody>
   <% @single_recipe.recipe_foods.includes(:food).each do |recipe_food| %>
-    <tr>
-    <th><%=recipe_food.food.name%></th>
-    <th><%=recipe_food.quantity%></th>
-    <th><%=recipe_food.food.price * recipe_food.quantity%></th>
-    <th class="d-flex gap-2">
-      <% if user_signed_in? %>
-        <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
-          <button class="btn btn-warning">Edit</button>
-        </a>
-
+    <tr class="d-flex justify-content-between">
+    <th class="text-start"><%=recipe_food.food.name%></th>
+    <th class="text-start"><%=recipe_food.quantity%></th>
+    <th class="text-start"><%=recipe_food.food.price * recipe_food.quantity%></th>
+    <th class="d-flex gap-2 text-start">
+      <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
+      <button class="btn btn-warning">Edit</button>
+      </a>
         <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
           <%= form.hidden_field :rf_id, value:recipe_food.id %>
           <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>

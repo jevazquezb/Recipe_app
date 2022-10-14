@@ -18,7 +18,7 @@
       <th class="remove">
         <%= form_with url: "/recipes/destroy", method: :post do |form| %>
           <%= form.hidden_field :id, value:recipe.id %>
-          <%= form.submit "REMOVE" %>
+          <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
         <% end %>
         </th>
       </tr>
