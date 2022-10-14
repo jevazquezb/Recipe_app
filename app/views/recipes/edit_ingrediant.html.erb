@@ -1,0 +1,9 @@
+<%= form_with url: "/recipes/update_recipe_food", method: :post do |form| %>
+<div class="mb-3">
+  <%= form.label :quantity, "Enter number of items", class:"form-label text-success fs-3 " %>
+  <%= form.number_field :quantity, :value=>@editable_recipe_food.quantity, :class=>"form-control" %> 
+</div>
+  <%= form.hidden_field :recipe_id, value: @editable_recipe_food.recipe_id  %>
+  <%= form.hidden_field :id, value: @editable_recipe_food.id  %>
+  <%= form.submit "Add Recipe Food",:class=>"form-control btn btn-primary"  %>
+<% end %>
