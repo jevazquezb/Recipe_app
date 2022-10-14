@@ -2,7 +2,9 @@
   <div class="d-flex justify-content-between align-items-center">
     <% if user_signed_in? %>
         <div>
-          <h2 class="mb-0">Hello, <%= current_user.name %>!</h2>
+          <a href="/" class="text-decoration-none">
+            <h2 class="mb-0">Hello, <%= current_user.name %>!</h2>
+          </a>
         </div>
         <div>
           <a href="/recipes" class="navbar-brand">
