@@ -1,3 +1,4 @@
+
 example_id                                                     | status  | run_time        |
 -------------------------------------------------------------- | ------- | --------------- |
 ./spec/helpers/foods_helper_spec.rb[1:1]                       | pending | 0.00002 seconds |
@@ -21,3 +22,46 @@ example_id                                                     | status  | run_t
 ./spec/views/recipes/index.html.erb_spec.rb[1:1]               | pending | 0.00004 seconds |
 ./spec/views/recipes/public_recipes.html.erb_spec.rb[1:1]      | pending | 0.00004 seconds |
 ./spec/views/recipes/show.html.erb_spec.rb[1:1]                | pending | 0.00003 seconds |
+
+example_id                                              | status | run_time        |
+------------------------------------------------------- | ------ | --------------- |
+./spec/features/foods_index_spec.rb[1:1]                | passed | 0.02795 seconds |
+./spec/features/foods_index_spec.rb[1:2]                | passed | 0.01965 seconds |
+./spec/features/foods_index_spec.rb[1:3]                | passed | 0.02701 seconds |
+./spec/features/recipes_index_spec.rb[1:1]              | passed | 0.031 seconds   |
+./spec/features/recipes_index_spec.rb[1:2]              | passed | 0.02143 seconds |
+./spec/features/recipes_index_spec.rb[1:3]              | passed | 0.03706 seconds |
+./spec/features/recipes_show_spec.rb[1:1]               | passed | 0.01375 seconds |
+./spec/features/recipes_show_spec.rb[1:2]               | passed | 0.01461 seconds |
+./spec/features/recipes_show_spec.rb[1:3]               | passed | 0.01361 seconds |
+./spec/features/shopping_list_index_spec.rb[1:1]        | passed | 0.04112 seconds |
+./spec/features/shopping_list_index_spec.rb[1:2]        | passed | 0.0457 seconds  |
+./spec/features/shopping_list_index_spec.rb[1:3]        | passed | 0.03593 seconds |
+./spec/models/food_spec.rb[1:1:1]                       | passed | 0.00643 seconds |
+./spec/models/food_spec.rb[1:1:2]                       | passed | 0.00724 seconds |
+./spec/models/food_spec.rb[1:1:3]                       | passed | 0.00619 seconds |
+./spec/models/food_spec.rb[1:1:4]                       | passed | 0.00649 seconds |
+./spec/models/food_spec.rb[1:1:5]                       | passed | 0.04472 seconds |
+./spec/models/recipe_food_spec.rb[1:1]                  | passed | 0.01086 seconds |
+./spec/models/recipe_food_spec.rb[1:2]                  | passed | 0.01051 seconds |
+./spec/models/recipe_spec.rb[1:1]                       | passed | 0.00675 seconds |
+./spec/models/recipe_spec.rb[1:2]                       | passed | 0.01477 seconds |
+./spec/models/recipe_spec.rb[1:3]                       | passed | 0.00658 seconds |
+./spec/models/recipe_spec.rb[1:4]                       | passed | 0.00698 seconds |
+./spec/models/recipe_spec.rb[1:5]                       | passed | 0.00619 seconds |
+./spec/models/user_spec.rb[1:1:1]                       | passed | 0.00577 seconds |
+./spec/models/user_spec.rb[1:1:2]                       | passed | 0.00563 seconds |
+./spec/models/user_spec.rb[1:1:3]                       | passed | 0.00525 seconds |
+./spec/models/user_spec.rb[1:1:4]                       | passed | 0.00697 seconds |
+./spec/requests/foods_controller_spec.rb[1:1:1]         | passed | 0.01157 seconds |
+./spec/requests/foods_controller_spec.rb[1:1:2]         | passed | 0.10133 seconds |
+./spec/requests/foods_controller_spec.rb[1:1:3]         | passed | 0.0127 seconds  |
+./spec/requests/recipes_controller_spec.rb[1:1:1]       | passed | 0.01327 seconds |
+./spec/requests/recipes_controller_spec.rb[1:1:2]       | passed | 0.01251 seconds |
+./spec/requests/recipes_controller_spec.rb[1:1:3]       | passed | 0.01289 seconds |
+./spec/requests/recipes_controller_spec.rb[1:2:1]       | passed | 0.01398 seconds |
+./spec/requests/recipes_controller_spec.rb[1:2:2]       | passed | 0.01846 seconds |
+./spec/requests/recipes_controller_spec.rb[1:2:3]       | passed | 0.01211 seconds |
+./spec/requests/shopping_list_controller_spec.rb[1:1:1] | passed | 0.01643 seconds |
+./spec/requests/shopping_list_controller_spec.rb[1:1:2] | passed | 0.03041 seconds |
+./spec/requests/shopping_list_controller_spec.rb[1:1:3] | passed | 0.01673 seconds |

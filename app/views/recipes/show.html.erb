@@ -16,6 +16,7 @@
 </div> 
 
 <div>
+  <p class="fs-3 float-start">Preparation time: <%=  @single_recipe.preparation_time %> hrs</p> 
   <div class="float-end">
   <% if  @single_recipe.public %>
   <div class="form-check form-switch">
@@ -32,7 +33,6 @@
   <p class="fs-3">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
 
 </div>
-
 <p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> </p>
 <p><%= @single_recipe.description %></p>
 
@@ -44,8 +44,6 @@
     </div>
   <%end%>
 </div>
-
-
 <div class="table table-group-divider mt-3 p-2"></div>
 <table class="table border border-3 border-muted rounded-4">
   <thead>
@@ -66,14 +64,16 @@
       <a href= <%="/recipes/#{recipe_food.recipe_id}/update/#{recipe_food.id}"%>>
       <button class="btn btn-warning">Edit</button>
       </a>
-
-      <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
+        <%= form_with url: "/recipes/ingredint/destroy", method: :post do |form| %>
           <%= form.hidden_field :rf_id, value:recipe_food.id %>
           <%= form.hidden_field :r_id, value:recipe_food.recipe_id %>
           <%= form.submit "REMOVE", :class=>"btn btn-danger" %>
         <% end %>
+      <% else %>
+        <p class="mb-0 text-white">Invisible text</p>
+      <% end %>
     </th>
     <tr>
-  <%end %>
+  <% end %>
 </table>
 
