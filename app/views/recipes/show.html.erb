@@ -16,7 +16,7 @@
 </div> 
 
 <div>
-  <p class="fs-3 float-start">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
+  <p class="fs-3">Preparation time: <%=  @single_recipe.preparation_time %> </p> 
   <div class="float-end">
   <% if  @single_recipe.public %>
   <div class="form-check form-switch">
@@ -32,20 +32,20 @@
 </div>
 </div>
 
-<div class=" float-start">
 <p class="fs-3">Cooking time: <%=  @single_recipe.cooking_time %> </p>
 <p><%= @single_recipe.description %></p>
+
+<div class="p-5 mt-5 mb-5">
+  <% if user_signed_in? %>
+    <div class="float-start">
+      <a href="/general_shopping_list"> <button>General Shopping List </button></a>
+      <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
+    </div>
+  <%end%>
 </div>
 
-<% if user_signed_in? %>
-  <div class="float-start">
-    <a href="/general_shopping_list"> <button>General Shopping List </button></a>
-    <a href=<%="/recipes/#{@single_recipe.id}/add"%>><button> add ingredient</button> </a>
-  </div>
-<%end%>
 
-
-<div class="table table-group-divider float-start mt-3 p-2"></div>
+<div class="table table-group-divider mt-3 p-2"></div>
 <table class="table">
   <thead>
     <tr class="bg-primary text-white">
