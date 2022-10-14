@@ -15,7 +15,8 @@ class RecipesController < ApplicationController
   end
 
   def add_recipe_food
-    @recfoo_cre = RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id], food_id: params[:food_id])
+    @recfoo_cre = RecipeFood.create(quantity: params[:quantity], recipe_id: params[:recipe_id],
+                                    food_id: params[:food_id])
     authorize! :create, @recfoo_cre
     redirect_to "/recipes/#{params[:recipe_id]}"
   end

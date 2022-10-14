@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -7,7 +5,7 @@ class Ability
     user ||= User.new
 
     can :modify, Recipe, user_id: user.id
-    can [:create, :modify], RecipeFood
+    can %i[create modify], RecipeFood
     # Define abilities for the user here. For example:
     #
     #   return unless user.present?
