@@ -22,7 +22,7 @@ RSpec.describe 'Recipes index page', type: :feature do
         public: true
       )
     end
-    
+
     visit recipes_path
   end
 

@@ -47,7 +47,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = false
 
-  #Add Integration helpers to sign_in
+  # Add Integration helpers to sign_in
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :feature
 

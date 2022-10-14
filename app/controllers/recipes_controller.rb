@@ -1,5 +1,5 @@
 class RecipesController < ApplicationController
-  before_action :authenticate_user!, except: [:show, :public_recipes]
+  before_action :authenticate_user!, except: %i[show public_recipes]
 
   def index
     @all_recipes = Recipe.where(user_id: current_user.id)

@@ -11,7 +11,7 @@ RSpec.describe 'Foods', type: :request do
     )
 
     sign_in @user
-    
+
     @food = Food.create(
       name: 'Tomato',
       measurement_unit: 'kgs',

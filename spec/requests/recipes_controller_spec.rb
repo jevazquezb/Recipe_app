@@ -11,7 +11,7 @@ RSpec.describe 'Recipes', type: :request do
     )
 
     sign_in @user
-    
+
     @recipe = Recipe.create(
       name: 'Sabroso',
       preparation_time: 1.0,
@@ -50,7 +50,7 @@ RSpec.describe 'Recipes', type: :request do
     end
 
     it "should render the correct content in the 'show' template" do
-      expect(response.body).to include("#{@recipe.name}")
+      expect(response.body).to include(@recipe.name.to_s)
     end
   end
 end

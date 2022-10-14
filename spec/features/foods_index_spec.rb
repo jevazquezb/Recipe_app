@@ -21,7 +21,7 @@ RSpec.describe 'Food index page', type: :feature do
         user_id: @user.id
       )
     end
-    
+
     visit foods_path
   end
 

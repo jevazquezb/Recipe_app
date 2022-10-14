@@ -28,7 +28,7 @@ RSpec.describe RecipeFood, type: :model do
       quantity: 12,
       food_id: @food.id,
       recipe_id: @recipe.id
-    ) 
+    )
   end
 
   it 'quantity should be greater than zero' do

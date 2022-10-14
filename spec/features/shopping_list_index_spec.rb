@@ -34,11 +34,7 @@ RSpec.describe 'General Shopping List Index Page', type: :feature do
     @food_list = Food.where(user_id: @user.id)
 
     @food_list.each do |food|
-      RecipeFood.create(
-        quantity: 10,
-        recipe_id: @recipe.id,
-        food_id: food.id
-      )
+      RecipeFood.create(quantity: 10, recipe_id: @recipe.id, food_id: food.id)
     end
 
     visit general_shopping_list_index_path

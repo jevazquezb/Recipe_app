@@ -6,5 +6,6 @@ class User < ApplicationRecord
          :confirmable
   has_many :foods, dependent: :destroy
   has_many :recipes, dependent: :destroy
-  validates :name, presence: true, uniqueness: true, length: { minimum: 2, too_short: '%<count> characters is the minimum allowed' }
+  validates :name, presence: true, uniqueness: true,
+                   length: { minimum: 2, too_short: '%<count> characters is the minimum allowed' }
 end
